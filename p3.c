@@ -7,10 +7,11 @@
  */
 #include <stdio.h>
 
-double fpow(double base,int exp){
-    double result =1;
-    for(int i = 0; i<exp; i++){
-        result=result* base;
+double fpow(double base, int exp)
+{
+    double result = 1;
+    for (int i = 0; i < exp; i++) {
+        result *= base;
     }
     return result;
 }
@@ -18,36 +19,25 @@ double fpow(double base,int exp){
 int main(void)
 {
     int n;
-    
-    scanf("%d",&n);
-    double a[n+1];
-    for(int i=0;i<n+1;i++){
-        scanf("%lf",&a[i]);
+    if (scanf("%d", &n) != 1) return 1;
+
+    double a[1000];
+    for (int i = 0; i <= n; i++) {
+        if (scanf("%lf", &a[i]) != 1) return 1;
     }
 
+    int m;
+    if (scanf("%d", &m) != 1) return 1;
 
+    for (int k = 0; k < m; k++) {
+        double x;
+        if (scanf("%lf", &x) != 1) return 1;
 
-
-    int nx;
-    
-    scanf("%d",&nx);
-    double x[nx];
-    for(int i=0;i<nx;i++){
-        scanf("%lf",&x[i]);
-    }
-
-
-    double sum;
-    double d;
-    for(int i=0;i<nx;i++){
-        sum=0;
-        for(int j=0;j<n+1;j++){
-            d=a[j]*fpow(x[i],j);
-            sum+=d;
+        double sum = 0;
+        for (int j = 0; j <= n; j++) {
+            sum += a[j] * fpow(x, j);
         }
-        printf("%.3f\n",sum);
-
-
+        printf("%.3f\n", sum);
     }
     return 0;
 }
